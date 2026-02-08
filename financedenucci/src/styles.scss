@@ -1,1 +1,115 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+
+:root { 
+  /* Cores da Marca */
+  --brand-red: #ED1C24;        
+  --brand-dark: #8a0b10;
+  --success: #10b981; 
+  --danger: #ef4444; 
+  --gold: #D4AF37; 
+
+  /* DARK MODE (Glassmorphism Padrão) */
+  --bg-body: #050505;            
+  --bg-sidebar: rgba(0, 0, 0, 0.4); 
+  --text-main: #ffffff;
+  --text-secondary: #e5e7eb; 
+  --text-muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.1);
+  
+  /* GLASS CARD VARS */
+  --card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --card-border: rgba(255, 255, 255, 0.08);
+  
+  --input-bg: rgba(0, 0, 0, 0.2);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --hover-item: rgba(255, 255, 255, 0.05);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --text-shadow-brand: 0 0 20px rgba(237, 28, 36, 0.6);
+  
+  /* Gradient Específico Cards Dark */
+  --volume-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%);
+  --case-gradient: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+  --bg-exclusive: rgba(237, 28, 36, 0.1);
+}
+
+/* LIGHT MODE */
+[data-theme="light"] {
+  --bg-body: #F9FAFB; 
+  --bg-sidebar: #FFFFFF;
+  --text-main: #111827; 
+  --text-secondary: #4B5563; 
+  --text-muted: #9CA3AF;
+  --border: #E5E7EB;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E7EB;
+  --input-bg: #F3F4F6;
+  --input-border: #D1D5DB;
+  --hover-item: #F3F4F6;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); 
+  --text-shadow-brand: none;
+
+  --volume-gradient: #FFFFFF;
+  --case-gradient: #FFFFFF;
+  --bg-exclusive: #FEF2F2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { 
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif; 
+  background-color: var(--bg-body); 
+  background: linear-gradient(-45deg, #000000, #1a0202, #2a0505, #000000);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite; 
+  color: var(--text-main); 
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+[data-theme="light"] body {
+  background: var(--bg-body);
+  animation: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+::-webkit-scrollbar { 
+  width: 6px; 
+  height: 6px; 
+}
+
+::-webkit-scrollbar-track { 
+  background: transparent; 
+}
+
+::-webkit-scrollbar-thumb { 
+  background: rgba(255, 255, 255, 0.1); 
+  border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover { 
+  background: var(--brand-red); 
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-red);
+}

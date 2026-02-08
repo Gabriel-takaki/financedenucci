@@ -1,0 +1,305 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .login-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Animated Background */
+  .animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #000000, #1a0202, #2a0505, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: 0;
+  }
+  
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Glass Card */
+  .glass-card {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 420px;
+    padding: 48px 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px 0 rgba(237, 28, 36, 0.2);
+  }
+  
+  /* Brand Section */
+  .brand-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .brand-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 0 30px rgba(237, 28, 36, 0.6);
+    animation: pulse-soft 3s infinite ease-in-out;
+  }
+  
+  .brand-subtitle {
+    font-size: 11px;
+    color: #D4AF37;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: block;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+  }
+  
+  @keyframes pulse-soft {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Form */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  /* Input Group */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .input-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #e5e7eb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .input-field::placeholder {
+    color: #6b7280;
+  }
+  
+  .input-field:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: #ED1C24;
+    box-shadow: 0 0 0 3px rgba(237, 28, 36, 0.1);
+  }
+  
+  /* Password Wrapper */
+  .password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-wrapper .input-field {
+    padding-right: 48px;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+  }
+  
+  .toggle-password:hover {
+    color: #ED1C24;
+  }
+  
+  /* Error Message */
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    color: #fca5a5;
+    font-size: 13px;
+    animation: slideDown 0.3s ease;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Button */
+  .btn-login {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #ED1C24 0%, #8a0b10 100%);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 8px;
+  }
+  
+  .btn-login:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(237, 28, 36, 0.4);
+  }
+  
+  .btn-login:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  .btn-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Loading Spinner */
+  .loading-spinner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .spinner {
+    width: 18px;
+    height: 18px;
+    animation: rotate 1s linear infinite;
+  }
+  
+  .spinner circle {
+    stroke: currentColor;
+    stroke-dasharray: 80;
+    stroke-dashoffset: 60;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes rotate {
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes dash {
+    0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+    50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+    100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+  }
+  
+  /* Footer */
+  .login-footer {
+    margin-top: 32px;
+    text-align: center;
+  }
+  
+  .footer-text {
+    font-size: 11px;
+    color: #6b7280;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  /* Icons */
+  .icon-svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  .icon-sm {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .glass-card {
+      padding: 36px 28px;
+    }
+  
+    .brand-title {
+      font-size: 28px;
+    }
+  
+    .brand-subtitle {
+      font-size: 10px;
+      letter-spacing: 4px;
+    }
+  }
