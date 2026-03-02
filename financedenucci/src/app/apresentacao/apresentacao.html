@@ -1,0 +1,732 @@
+    <div id="splash-screen" (click)="dismissSplash()">
+        <div class="splash-logo">
+            <h1 class="splash-title">Ademicon</h1>
+            <span class="splash-subtitle">Gestão Private</span>
+        </div>
+        <div class="splash-hint">Clique na tela para iniciar</div>
+    </div>
+
+    <div class="main-container">
+    <div class="sidebar">
+        <div class="sidebar-controls">
+            <button class="control-btn" (click)="toggleTheme()" title="Alternar Tema">
+                <span id="theme-icon">
+                    <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </span>
+            </button>
+            <button class="control-btn" (click)="showSection('calc_lances')" title="Calculadora de Lances">
+                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="14"></line><line x1="8" y1="14" x2="8" y2="14"></line><line x1="12" y1="14" x2="12" y2="14"></line><line x1="16" y1="18" x2="16" y2="18"></line><line x1="8" y1="18" x2="8" y2="18"></line><line x1="12" y1="18" x2="12" y2="18"></line></svg>
+            </button>
+            <button class="control-btn" (click)="openConfigModal()" title="Configurações Globais">
+                <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </button>
+            <button class="control-btn" (click)="abrirModalRelatorio()" title="Gerar Relatório PDF">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </button>
+        </div>
+
+        <div class="brand">Ademicon <span>GESTÃO PRIVATE</span></div>
+        
+        <div class="nav-item active" (click)="showSection('home')">Sobre a Ademicon</div>
+        <div class="nav-item" (click)="showSection('solucao')">Solução Private</div>
+        <div class="nav-item" (click)="showSection('cenario')">Cenário de Crédito</div>
+        <div class="nav-item" (click)="showSection('investimento')">Estratégia de Liquidez</div>
+        <div class="nav-item" (click)="showSection('equity')">Equity (Giro de Capital)</div>
+        <div class="nav-item" (click)="showSection('alavancagem')">Alavancagem Patrimonial</div>
+        <div class="nav-item" (click)="showSection('assuncao')">Assunção de Dívida</div>
+        <div class="nav-item" (click)="showSection('gestao')">Gestão Private</div>
+        <div class="nav-item" (click)="showSection('perfil')">Perfil do Cliente</div>
+    </div>
+
+    <div class="content">
+
+        <div id="calc_lances" class="section">
+            <h1>Calculadora de Lances</h1>
+            <h2>Estratégia de Contemplação Acelerada</h2>
+            
+            <div class="grid-2">
+                <div class="control-panel">
+                    <h3 style="border-bottom: 1px solid var(--border); padding-bottom: 10px; font-weight: 400;">Simulação de Oferta</h3>
+                    <label>Valor do Crédito (Carta)</label>
+                    <input type="text" id="cl_credito" placeholder="R$ 500.000,00" (input)="formatarMoedaInput($event)">
+                    
+                    <label>Prazo Total do Grupo (Meses)</label>
+                    <input type="number" id="cl_prazo" placeholder="Ex: 200">
+                    
+                    <label>Modalidade de Lance</label>
+                    <select id="cl_tipo" style="padding:10px 0; border:none; border-bottom:1px solid var(--input-border); background:transparent; color:var(--text-main); width:100%; font-family:'Montserrat'; font-size:20px; font-weight:300;">
+                        <option value="livre">Lance Livre (Recurso Próprio)</option>
+                        <option value="embutido">Lance Embutido (Uso da Carta)</option>
+                    </select>
+
+                    <label>Percentual de Lance (%)</label>
+                    <div class="input-group input-suffix">
+                        <input type="text" id="cl_lance_pct" placeholder="Ex: 30,00" (keyup)="formatarDecimalInput($event)">
+                        <span class="suffix-symbol">%</span>
+                    </div>
+
+                    <button class="btn-action" (click)="calcLances()">Calcular Cenário</button>
+                </div>
+
+                <div id="cl_results" style="display: none; animation: fadeIn 0.5s;">
+                    <div class="card" style="border-left: 4px solid var(--gold);">
+                        <h3 style="color:var(--gold);">Resultado da Estratégia</h3>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <span class="label-result">Crédito Líquido (Dinheiro na Mão)</span>
+                            <div class="big-number" id="cl_credito_liquido" style="color:var(--text-main);">R$ 0,00</div>
+                            <small id="cl_obs_credito" style="color:var(--text-muted); font-size:10px;"></small>
+                        </div>
+                        
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--success); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span class="label-result" style="margin:0; color:var(--success);">Custo Efetivo do Dinheiro</span>
+                                <strong id="cl_custo_mensal" style="font-size:24px; color:var(--success);">0,00% a.m.</strong>
+                            </div>
+                            <small style="color:var(--text-muted); font-size:9px; display:block; margin-top:5px;">*Considerando Taxa Adm + FR sobre o valor líquido obtido.</small>
+                        </div>
+
+                        <div class="grid-2">
+                            <div>
+                                <span class="label-result">Valor do Lance Oferta</span>
+                                <strong id="cl_valor_lance" style="font-size:20px; color:var(--brand-red);">R$ 0,00</strong>
+                            </div>
+                            <div>
+                                <span class="label-result">Amortização de Dívida</span>
+                                <strong id="cl_amortizacao" style="font-size:20px; color:var(--success);">R$ 0,00</strong>
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--border); margin: 25px 0;">
+
+                        <div style="background: var(--hover-item); padding: 20px; border-radius: 8px;">
+                            <div class="grid-2">
+                                <div>
+                                    <span class="label-result">Parcela Cheia Atual</span>
+                                    <strong id="cl_parcela_atual" style="color:var(--text-secondary); font-size: 20px;">R$ 0,00</strong>
+                                </div>
+                                <div>
+                                    <span class="label-result" style="color:var(--text-main);">Nova Parcela Estimada</span>
+                                    <strong id="cl_parcela_pos" style="color:var(--text-main); font-size: 24px;">R$ 0,00</strong>
+                                </div>
+                            </div>
+                            <small id="cl_obs_parcela" style="color:var(--text-muted); font-size:10px; display:block; margin-top:10px; text-align:center;"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="home" class="section active">
+            <h1>A Solidez Ademicon</h1>
+            <h2>Trajetória, Governança & Market Share</h2>
+            <p style="color:var(--text-muted); margin-bottom:20px; font-weight: 300;">Clique nos itens para revelar a história.</p>
+            <div class="grid-2">
+                <div>
+                    <h3 style="border-bottom: 1px solid var(--border); padding-bottom:10px; margin-bottom:20px; font-weight: 300;">Cronologia da Inovação</h3>
+                    <div class="timeline-item" (click)="toggleContent('hist1')"><div class="timeline-header"><span class="year">1991 - A Fundação</span><span class="expand-icon"><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="hist1" class="timeline-content">Fundada em Curitiba por 36 empresários que buscavam crédito acessível para alavancar negócios na construção civil. Autorizada pelo BACEN.</p></div>
+                    <div class="timeline-item" (click)="toggleContent('hist2')"><div class="timeline-header"><span class="year">Validação & Expansão</span><span class="expand-icon"><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="hist2" class="timeline-content">Crescimento exponencial atingindo a marca histórica de R$ 5 Bilhões em créditos administrados anualmente.</p></div>
+                    <div class="timeline-item" (click)="toggleContent('hist3')"><div class="timeline-header"><span class="year">2021 - O Mercado de Equity</span><span class="expand-icon"><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="hist3" class="timeline-content">Entrada no mercado de Equity oferecendo crédito, investimento e alavancagem patrimonial.</p></div>
+                    <div class="timeline-item" (click)="toggleContent('hist4')"><div class="timeline-header"><span class="year">2023 - Aporte de Fundos Soberanos</span><span class="expand-icon"><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="hist4" class="timeline-content">Investimentos da <strong>23S Capital</strong> e <strong>Treecorp</strong> para acelerar o crescimento.</p></div>
+                </div>
+                <div>
+                    <h3 style="border-bottom: 1px solid var(--border); padding-bottom:10px; margin-bottom:20px; font-weight: 300;">Posicionamento Atual</h3>
+                    <div class="card card-volume" (click)="toggleContent('vol_reveal')">
+                        <div style="text-align: center; padding: 10px 0;">
+                            <span style="font-size: 10px; letter-spacing: 2px; color: var(--brand-red); text-transform: uppercase;">Volume em Carteira</span>
+                            <div id="vol_hint" style="font-size: 20px; color: #666; margin: 10px 0;">[VER NÚMEROS]</div>
+                            <div id="vol_reveal" style="display: none; animation: fadeIn 0.5s;"><strong style="display: block; font-size: 42px; color: var(--text-main); margin: 10px 0; font-weight: 600;">R$ 40 Bilhões</strong></div>
+                            <span style="font-size: 11px; color: #888;">Administrados Anualmente</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <div class="market-badge" (click)="toggleContent('bad1')"><div style="display:flex; justify-content:space-between;"><strong>Maior Administradora Independente</strong><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><span id="bad1" class="badge-content">Líder absoluta entre as independentes e 4ª Maior Administradora do Brasil (Geral).</span></div>
+                        <div class="market-badge" style="border-left-color: var(--brand-red);" (click)="toggleContent('bad2')"><div style="display:flex; justify-content:space-between;"><strong>Operação White Label</strong><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><span id="bad2" class="badge-content">Grandes marcas utilizam a infraestrutura Ademicon para seus produtos financeiros.</span></div>
+                        <div class="market-badge" style="border-left-color: var(--text-main);" (click)="toggleContent('bad3')"><div style="display:flex; justify-content:space-between;"><strong>Gestão Private</strong><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><span id="bad3" class="badge-content">Estrutura exclusiva dedicada ao atendimento de clientes de alta renda, com foco em planejamento tributário e sucessório.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="solucao" class="section">
+            <h1>A Solução Private</h1>
+            <h2>Conceito de Alocação Inteligente</h2>
+            <div class="highlight-box"><p class="highlight-text">"Proporcionar crescimento patrimonial líquido ou imobilizado sem comprometer o fluxo financeiro dos nossos investidores."</p></div>
+            <div class="grid-3">
+                <div class="card" style="border-top: 3px solid var(--brand-red);"><h3>Arbitragem Financeira</h3><p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">O custo do crédito no planejamento é significativamente menor que o retorno de suas aplicações ou margem da empresa.</p></div>
+                <div class="card" style="border-top: 3px solid var(--text-main);"><h3>Liquidez (Cash is King)</h3><p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">Não descapitalizar para adquirir patrimônio. Mantenha seu capital rendendo e protegido.</p></div>
+                <div class="card" style="border-top: 3px solid var(--brand-dark);"><h3>Eficiência de Fluxo</h3><p style="color:var(--text-secondary); font-size:13px; line-height:1.6;">Transformar uma grande saída de caixa em um fluxo mensal suave e previsível.</p></div>
+            </div>
+        </div>
+
+        <div id="cenario" class="section">
+            <h1>Cenário de Crédito no Brasil</h1>
+            <h2>Comparativo Interativo de Custo de Capital</h2>
+            <p style="color:var(--text-muted); margin-bottom:20px;">Clique nas modalidades abaixo para revelar as taxas de mercado.</p>
+            <div class="grid-2">
+                <div>
+                    <div class="ranking-item" style="border-left: 3px solid #666;" (click)="revealCenario('avista')"><div class="ranking-icon" style="background: #333; color: #ccc;">1</div><div style="width: 100%;"><div style="display:flex; justify-content:space-between; align-items:center;"><strong style="color: var(--text-secondary); font-size: 16px;">À Vista (Recursos Próprios)</strong><span style="font-size:10px; color:var(--text-muted);">[CLIQUE PARA REVELAR]</span></div><div id="reveal-avista" class="hidden-content"><div style="display: flex; justify-content: space-between; width: 100%; margin-top: 5px; border-top:1px dashed var(--border); padding-top:5px;"><span style="font-size: 12px; color: var(--text-muted);">Custo de Oportunidade</span><strong style="color: var(--text-main);">~ 1,00% a.m.</strong></div><p style="font-size: 11px; color: var(--text-muted); margin: 5px 0 0 0;">Perda de rentabilidade composta (CDI) e descapitalização de caixa.</p></div></div></div>
+                    <div class="ranking-item" style="border-left: 3px solid var(--danger);" (click)="revealCenario('banco')"><div class="ranking-icon" style="background: rgba(239, 68, 68, 0.2); color: var(--danger);">2</div><div style="width: 100%;"><div style="display:flex; justify-content:space-between; align-items:center;"><strong style="color: var(--danger); font-size: 16px;">Financiamento Bancário</strong><span style="font-size:10px; color:var(--text-muted);">[CLIQUE PARA REVELAR]</span></div><div id="reveal-banco" class="hidden-content"><div style="display: flex; justify-content: space-between; width: 100%; margin-top: 5px; border-top:1px dashed var(--border); padding-top:5px;"><span style="font-size: 12px; color: var(--text-muted);">Juros Compostos + CET</span><strong style="color: var(--danger);">~ 1,50% a.m.</strong></div><p style="font-size: 11px; color: var(--text-muted); margin: 5px 0 0 0;">Acesso restrito, alienação fiduciária rígida e custo final de 2 a 3x o valor do bem.</p></div></div></div>
+                    <div class="ranking-item" style="border-left: 3px solid var(--success); background: rgba(16, 185, 129, 0.05);" (click)="revealCenario('ademicon')"><div class="ranking-icon" style="background: var(--success); color: #000;">3</div><div style="width: 100%;"><div style="display:flex; justify-content:space-between; align-items:center;"><strong style="color: var(--success); font-size: 16px;">Crédito Estruturado (Ademicon Private)</strong><span style="font-size:10px; color:var(--text-muted);">[CLIQUE PARA REVELAR]</span></div><div id="reveal-ademicon" class="hidden-content"><div style="display: flex; justify-content: space-between; width: 100%; margin-top: 5px; border-top:1px dashed var(--border); padding-top:5px;"><span style="font-size: 12px; color: var(--text-muted);">Custo de Estruturação (Flat Fee)</span><strong style="color: var(--success); font-size: 18px;">~ 0,10% a.m.</strong></div><p style="font-size: 11px; color: var(--text-muted); margin: 5px 0 0 0;">Alavancagem sem juros. Custo fixo diluído no prazo. Poder de compra à vista.</p></div></div></div>
+                </div>
+                <div><div class="card"><h3>Custo Mensal (%)</h3><div style="height: 300px; position: relative; width: 100%;"><canvas id="chartCenario"></canvas></div><div style="margin-top: 15px; background: var(--hover-item); padding: 15px; border-radius: 6px;"><p style="font-size: 11px; color: var(--text-secondary); margin: 0; line-height: 1.4;"><strong style="color: var(--brand-red);">Insight Econômico:</strong> A diferença entre pagar 1,50% e 0,10% é a viabilidade matemática do investimento.</p></div></div></div>
+            </div>
+        </div>
+
+        <div id="investimento" class="section">
+            <h1>Investimento Líquido</h1>
+            <h2>Estratégia de Liquidez (Mercado Secundário)</h2>
+            <div class="trust-badge"><strong style="color: var(--text-main); display: flex; align-items: center;"><span style="background: #10b981; color: #000; padding: 4px 8px; border-radius: 4px; font-size: 10px; margin-right: 10px; font-weight: 700;">GARANTIA</span>Banca Própria Ademicon (Contemplay)</strong><p style="margin: 5px 0 0 0; color: var(--text-muted); font-size: 11px;">Compra e venda de crédito auditada, garantindo liquidez e risco zero.</p></div>
+            <div class="grid-2">
+                <div class="control-panel">
+                    <h3 style="border-bottom: 1px solid var(--border); padding-bottom: 10px; font-weight: 400;">Configurar Operação</h3>
+                    <label>Valor do Crédito Inicial</label><input type="text" id="inv_credito" placeholder="R$ 1.000.000,00" (keyup)="formatarMoedaInput($event)">
+                    <label>Prazo Estimado de Contemplação (Meses)</label><input type="number" id="inv_meses" placeholder="Ex: 50">
+                    <label>Taxa de Saída (Mercado Secundário)</label><div class="input-group input-suffix"><input type="text" id="inv_agio" placeholder="Ex: 40,00" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+                    <button class="btn-action" (click)="calcInvestimento()">Calcular Cenário</button>
+                </div>
+                <div id="liquidez_results" style="display: none; animation: fadeIn 0.5s;">
+                    <div class="card" style="margin-bottom: 20px; border-left: 4px solid #666;">
+                        <h3 style="font-size: 14px; color:var(--text-secondary);">Cenário na Contemplação</h3>
+                        <div class="grid-2">
+                            <div><span class="label-result">Investimento Mensal (50%)</span><div class="big-number" id="inv_mensal_inicial" style="color:var(--text-main); font-size: 24px;">R$ 0,00</div></div>
+                            <div><span class="label-result">Total Investido (c/ Correção)</span><div class="big-number" id="res_investido" style="font-size: 24px;">R$ 0,00</div></div>
+                        </div>
+                        <div style="margin-top:15px;"><span class="label-result">Crédito Corrigido (INCC)</span><div class="big-number" id="res_credito_corr" style="font-size: 28px; color: var(--text-main);">R$ 0,00</div></div>
+                    </div>
+                    <div class="card" style="border-left: 4px solid var(--gold); margin-bottom: 20px;">
+                        <h3 style="font-size: 14px; color:#D4AF37;">Resultado da Operação</h3>
+                        <div class="grid-2">
+                            <div><span class="label-result">Valor de Realização (Exit)</span><div class="big-number" id="res_venda" style="color: var(--text-main); font-size: 26px;">R$ 0,00</div></div>
+                            <div><span class="label-result">Resultado Líquido Projetado</span><div class="big-number highlight-gold" id="res_lucro_liq" style="font-size: 26px;">R$ 0,00</div></div>
+                        </div>
+                        <hr style="border: 0; border-top: 1px solid var(--border); margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div><span class="label-result" style="display:block;">ROI Total</span><span id="res_roi_total" style="color: var(--text-main); font-weight: 300; font-size: 22px;">0,00%</span></div>
+                            <div style="text-align: right;"><span class="label-result" style="display:block;">Média de Retorno Mensal</span><span id="res_roi_mes" style="color: var(--success); font-weight: 400; font-size: 28px;">0,00% a.m.</span></div>
+                        </div>
+                    </div>
+                    <div class="card"><h3>Comparativo: CDI vs Ademicon Trade</h3><div style="height: 250px; position: relative; width: 100%;"><canvas id="chartComparativo"></canvas></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="equity" class="section">
+            <h1>Equity & Giro de Capital</h1>
+            <h2>Alavancagem Inteligente vs Crédito Bancário</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Utilize imóvel próprio para levantar capital barato. Fluxo inteligente com <strong>Meia Parcela</strong> até a contemplação.</p>
+            <div class="grid-2">
+                <div class="control-panel">
+                    <h3 style="border-bottom: 1px solid var(--border); padding-bottom: 10px; font-weight: 400;">Simular Equity</h3>
+                    <label>Crédito Solicitado (Capital de Giro)</label><input type="text" id="eq_credito" placeholder="R$ 1.000.000,00" (keyup)="formatarMoedaInput($event)">
+                    <label>Previsão de Contemplação (Meses)</label><input type="number" id="eq_meses" placeholder="Ex: 12">
+                    <button class="btn-action" (click)="calcEquity()">Comparar Fluxos</button>
+                    
+                    <div id="equity_results" style="margin-top: 20px; display: none; animation: fadeIn 0.5s;">
+                         <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid var(--brand-red);">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                                <div>
+                                    <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">1ª Parcela (Meia)</span>
+                                    <strong style="display:block; font-size: 20px; color: var(--text-main);" id="eq_parcela_meia">R$ 0,00</strong>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Total Investido (c/ Correção)</span>
+                                    <strong style="display:block; font-size: 20px; color: var(--brand-red);" id="eq_total_acumulado">R$ 0,00</strong>
+                                </div>
+                            </div>
+                            <small style="color: var(--text-muted); font-size: 9px; display: block; margin-top: 5px;">*Considerando correção anual INCC (7%)</small>
+                        </div>
+                         <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; border-left: 3px solid #10b981;">
+                            <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Investimento Mensal Pós (Rateio Saldo Devedor)</span>
+                            <strong style="display:block; font-size: 20px; color: var(--text-main);" id="eq_parcela_cheia">R$ 0,00</strong>
+                            <small style="color: var(--text-muted); font-size: 9px;">(Saldo Devedor / Prazo Restante)</small>
+                        </div>
+                        <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; border-left: 3px solid var(--text-main); margin-top: 10px;">
+                             <span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Crédito Disponível na Contemplação (Corrigido)</span>
+                             <strong style="display:block; font-size: 20px; color: var(--text-main);" id="eq_credito_futuro">R$ 0,00</strong>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="compare_taxas" style="display: none; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div class="card" style="text-align: center; border-color: var(--success); padding: 20px;">
+                            <span class="label-result">Custo Funding Ademicon</span>
+                            <div class="big-number highlight-green" style="font-size: 28px;" id="eq_custo_consorcio">0,10% a.m.</div>
+                            <small style="display:block; font-size: 9px; color: var(--text-muted); margin-top: -5px; font-weight: 300;">(sem inflação)</small>
+                        </div>
+                        <div class="card" style="text-align: center; border-color: var(--danger); padding: 20px;">
+                            <span class="label-result">Custo Banco</span>
+                            <div class="big-number" style="font-size: 28px; color: var(--danger);">1,50% a.m.</div>
+                            <small style="display:block; font-size: 9px; color: var(--text-muted); margin-top: -5px; font-weight: 300;">(sem inflação)</small>
+                        </div>
+                    </div>
+                      <div class="card" style="margin-bottom: 20px; display: none;" id="card_spread_visual">
+                        <h3 style="margin-bottom: 15px;">Arbitragem Financeira (Spread)</h3>
+                        <div style="height: 100px; width: 100%;"><canvas id="chartSpread"></canvas></div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 10px; color: var(--text-muted);">
+                            <span>Custo Funding (Vermelho)</span>
+                            <span>Ganho Líquido (Verde)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 20px; display: none;" id="card_grafico_eq">
+                        <h3>Custo Acumulado (Saída de Caixa)</h3>
+                        <div style="height: 300px; position: relative; width: 100%;"><canvas id="chartEquity"></canvas></div>
+                        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 15px; border-radius: 6px; text-align: center; margin-top: 15px;"><strong style="color: #10b981; font-size: 14px;">Economia Gerada para o Negócio: <span id="res_economia_eq">R$ 0,00</span></strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="alavancagem" class="section">
+            <h1>Alavancagem Patrimonial</h1>
+            <h2>Roteiro de Construção de Riqueza (Inquilinos)</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Simulação progressiva de aquisição de ativos autofinanciáveis.</p>
+            
+            <div id="inquilinos-container"></div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button (click)="adicionarInquilino()" style="background: transparent; border: 1px dashed var(--brand-red); color: var(--brand-red); padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: bold; display: none;" id="btn-add-inquilino">+ Adicionar Novo Inquilino (Expandir Patrimônio)</button>
+            </div>
+
+            <div id="global-chart-container" style="display:none; margin-top: 50px;">
+                <div class="card" style="border: 1px solid var(--brand-red);">
+                    <h3 style="color: var(--brand-red);">O Efeito da Alavancagem Temporal</h3>
+                    <p style="color: var(--text-muted);">Visualize o abismo entre o que você pagou (verde) e o que você construiu (vermelho).</p>
+                    <div style="height: 400px; position: relative; width: 100%;"><canvas id="chartGlobalInquilinos"></canvas></div>
+                    <div class="summary-dash">
+                        <div class="summary-item"><small>Investimento Total (Bolso)</small><strong style="color: #10b981;" id="sum_investido">R$ 0,00</strong></div>
+                        <div class="summary-item"><small>Patrimônio Total Adquirido</small><strong style="color: var(--gold);" id="sum_patrimonio">R$ 0,00</strong></div>
+                        <div class="summary-item"><small>Renda Mensal (3 Imóveis)</small><strong style="color: #0ea5e9;" id="sum_renda">R$ 0,00</strong></div>
+                        <div class="summary-item"><small>Free Cash Flow (FCF)</small><strong id="sum_sobra">R$ 0,00</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="assuncao" class="section">
+            <h1>Assunção de Dívida</h1>
+            <h2>Inteligência Financeira (Art. 299 Código Civil)</h2>
+            <p style="color:var(--text-muted); margin-bottom: 30px;">Clique nos itens abaixo para entender a estratégia de saída.</p>
+            <div class="grid-2">
+                <div>
+                    <div class="step-box" (click)="toggleContent('assuncao1')"><div class="step-header"><h4>1. O Mecanismo (Arbitragem)</h4><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="assuncao1" class="step-content">Na <strong>Banca Ademicon</strong>, disponibilizamos seu crédito "barato" (0,10% a.m.) para terceiros que precisam de crédito imediato e possuem imóveis para garantia (que normalmente pagam taxas de ~1,40% a.m. no banco).</p></div>
+                    <div class="step-box" (click)="toggleContent('assuncao2')"><div class="step-header"><h4>2. A Vantagem (Deságio)</h4><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="assuncao2" class="step-content">Você consegue vender seu crédito com saldo devedor gerando um <strong>ganho financeiro</strong>. Na prática, é possível "quitar" a dívida com um <strong>desconto de 20% a 30%</strong>.</p></div>
+                    <div class="step-box" style="border-left-color: var(--success);" (click)="toggleContent('assuncao3')"><div class="step-header"><h4 style="color: var(--success);">3. Juros Negativos</h4><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div><p id="assuncao3" class="step-content">Você pegou o crédito, girou o dinheiro (Equity), fez patrimônio, e depois decidiu quitar seu saldo devedor vendendo ao mercado por um valor menor do que pegou inicialmente.</p></div>
+                </div>
+                <div>
+                    <div class="card card-case" (click)="toggleContent('exemplo_assuncao')" style="cursor:pointer;">
+                        <h3 style="text-align: center; color: var(--text-main); margin-bottom: 10px;">Case Real: Saída Estratégica com Lucro [ + ]</h3>
+                        <div id="exemplo_assuncao" style="display:none; animation: fadeIn 0.5s;">
+                            <div class="deal-context">Investidor provisionou R$ 1 Mi, contemplou no mês 48 (4 anos), utilizou o crédito por 36 meses (3 anos) e decidiu quitar.</div>
+                            <div style="display:flex; justify-content:space-between; gap:20px;">
+                                <div style="width:50%;">
+                                    <h4 style="color:#10b981; font-size:12px; border-bottom:1px solid #10b981; padding-bottom:5px;">VOCÊ (INVESTIDOR)</h4>
+                                    <table class="deal-table">
+                                        <tr><td>Crédito Provisionado:</td><td style="text-align:right;">R$ 1.000.000,00</td></tr>
+                                        <tr><td>Investido (48 meses):</td><td style="text-align:right;">R$ 177.529,00</td></tr>
+                                        <tr><td>Crédito Atualizado (48 m):</td><td style="text-align:right; color:var(--text-main);">R$ 1.310.796,01</td></tr>
+                                        <tr><td>Investido pós (36 meses):</td><td style="text-align:right;">R$ 235.986,00</td></tr>
+                                        <tr><td>Saldo Devedor:</td><td style="text-align:right; color:#ef4444;">R$ 826.483,00</td></tr>
+                                        <tr><td>Parcelas a Vencer:</td><td style="text-align:right;">136 x R$ 6.559</td></tr>
+                                        <tr><td>Desconto (Quitação):</td><td style="text-align:right;">30%</td></tr>
+                                        <tr><td class="deal-highlight">Custo de Saída:</td><td class="deal-highlight" style="text-align:right;">R$ 578.538,00</td></tr>
+                                        <tr style="border-top:1px solid #333;"><td style="padding-top:5px;"><strong>Custo Total Operação:</strong></td><td style="text-align:right; padding-top:5px;"><strong style="color:var(--brand-red);">R$ 992.053,00</strong></td></tr>
+                                        <tr style="border-top:1px solid #333;"><td style="padding-top:10px; color:#10b981; font-weight:600;">GANHO FINANCEIRO:</td><td style="text-align:right; padding-top:10px; color:#10b981; font-weight:700; font-size:16px;">R$ 318.743,01</td></tr>
+                                    </table>
+                                </div>
+                                <div style="width:50%;">
+                                    <h4 style="color:#d4af37; font-size:12px; border-bottom:1px solid #d4af37; padding-bottom:5px;">O COMPRADOR (MERCADO)</h4>
+                                    <table class="deal-table">
+                                        <tr><td>Necessidade:</td><td style="text-align:right;">Crédito Imediato</td></tr>
+                                        <tr><td>Garantia:</td><td style="text-align:right;">Imóvel Próprio</td></tr>
+                                        <tr><td>Assume Dívida de:</td><td style="text-align:right;">R$ 826.483,00</td></tr>
+                                        <tr><td class="deal-highlight">Taxa que ele paga:</td><td class="deal-highlight" style="text-align:right;">~1,29% a.m.</td></tr>
+                                    </table>
+                                    <p style="font-size:10px; color:var(--text-muted); margin-top:5px;">*Melhor que Banco (1,8%).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="gestao" class="section">
+            <h1>Gestão Private Exclusiva</h1>
+            <h2>Ferramentas de Contemplação & Acompanhamento</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="clickable-header" (click)="toggleContent('modalidades_lance')"><h3>Estratégias de Acesso (Contemplação)</h3><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div>
+                    <div id="modalidades_lance" style="display:none; margin-top:20px; animation: fadeIn 0.5s;">
+                        <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; border-left: 3px solid var(--text-main); margin-bottom: 15px;">
+                            <strong style="color: var(--text-main);">SORTEIO (Auditado - Loteria Federal)</strong>
+                            <span style="display: block; font-size: 12px; color: var(--text-muted);">Contemplação estatística.</span>
+                        </div>
+                        <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; border-left: 3px solid var(--text-main); margin-bottom: 15px;">
+                            <strong style="color: var(--text-main);">LANCE LIVRE (Oferta de Capital)</strong>
+                            <span style="display: block; font-size: 12px; color: var(--text-muted);">Antecipação via aporte.</span>
+                        </div>
+                        <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; border-left: 3px solid var(--text-main); margin-bottom: 15px;">
+                            <strong style="color: var(--text-main);">LANCE FIXO (Teto Contratual)</strong>
+                            <span style="display: block; font-size: 12px; color: var(--text-muted);">Cota definida em contrato.</span>
+                        </div>
+                        <div style="background: var(--hover-item); padding: 15px; border-radius: 6px; border-left: 3px solid var(--text-main); margin-bottom: 15px;">
+                            <strong style="color: var(--text-main);">LANCE ESTRUTURADO (Embutido/Recebíveis)</strong>
+                            <span style="display: block; font-size: 12px; color: var(--text-muted);">Uso da própria carta.</span>
+                        </div>
+                        <div style="background: var(--bg-exclusive); padding: 15px; border-radius: 6px; border-left: 3px solid var(--brand-red);">
+                            <strong style="color: var(--brand-red);">LANCE EXCLUSIVO (Carteira Private)</strong>
+                            <span style="display: block; font-size: 12px; color: var(--text-muted);">Fidelidade para clientes pontuais.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="clickable-header" (click)="toggleContent('acompanhamento_private')"><h3>Acompanhamento</h3><span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div>
+                    <ul id="acompanhamento_private" style="display:none; list-style: none; padding: 0; color: var(--text-secondary); line-height: 2.0; margin-top:20px; animation: fadeIn 0.5s;">
+                        <li><svg class="icon-svg icon-sm" style="color:var(--success); margin-right:5px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Relatório mensal de probabilidades.</li>
+                        <li><svg class="icon-svg icon-sm" style="color:var(--success); margin-right:5px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Análise de assembleias.</li>
+                        <li><svg class="icon-svg icon-sm" style="color:var(--success); margin-right:5px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Consultoria Tributária.</li>
+                        <li><svg class="icon-svg icon-sm" style="color:var(--success); margin-right:5px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Acesso à mesa Private.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="perfil" class="section">
+            <div class="sub-tab-menu">
+                <div class="sub-tab-item active" (click)="switchSubTab('tab_analise', $event)">Análise de Perfil</div>
+                <div class="sub-tab-item" (click)="switchSubTab('tab_aposentadoria', $event)">Renda Fixa</div>
+                <div class="sub-tab-item" (click)="switchSubTab('tab_imobiliaria', $event)">Projeção Imobiliária</div>
+                
+            </div>
+
+            <div id="tab_analise" class="sub-tab-content active">
+                <div class="grid-2">
+                    <div class="control-panel">
+                        <h3>Diagnóstico</h3>
+                        <label>Liquidez Disponível</label><input type="text" id="pf_investido" placeholder="R$ 500k" (input)="formatarMoedaInput($event)">
+                        <label>Rentabilidade %</label><div class="input-group input-suffix"><input type="text" id="pf_rentabilidade" placeholder="1,00" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+                        <label>Capacidade de Alocação Mensal</label><input type="text" id="pf_aporte" placeholder="R$ 10k" (input)="formatarMoedaInput($event)">
+                        <label>Renda</label><input type="text" id="pf_renda" placeholder="R$ 50k" (input)="formatarMoedaInput($event)">
+                        <label>Custo</label><input type="text" id="pf_custo" placeholder="R$ 30k" (input)="formatarMoedaInput($event)">
+                        <label>Patrimônio</label><input type="text" id="pf_imoveis" placeholder="R$ 2M" (input)="formatarMoedaInput($event)">
+                        <button class="btn-action" (click)="calcPerfil()">Gerar Proposta</button>
+                    </div>
+                    <div id="perfil-result" style="display:none; animation:fadeIn 0.5s;">
+                        <div class="proposal-card">
+                            <h3 style="color:var(--text-main); border-bottom:2px solid var(--brand-red);">Proposta Private</h3>
+                            <div style="margin:15px 0;"><strong style="color:var(--brand-red); font-size:16px;" id="pf_strategy_title">---</strong><p style="font-size:12px; color:var(--text-secondary);" id="pf_strategy_desc">---</p></div>
+                            <div style="background:var(--hover-item); padding:15px; border-radius:8px;"><small>Aporte Sugerido</small><strong style="display:block; font-size:28px;" id="pf_sugestao">R$ 0,00</strong></div>
+                            <div style="margin-top:15px;"><small>Potencial Crédito</small><strong style="display:block; font-size:22px; color:var(--success);" id="pf_credito">R$ 0,00</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tab_aposentadoria" class="sub-tab-content">
+                <div class="grid-2">
+                    <div class="control-panel">
+                        <h3>Parâmetros Renda Fixa</h3>
+                        <label>Reserva</label><input type="text" id="ap_reserva" placeholder="R$ 0,00" (input)="formatarMoedaInput($event)">
+                        <label>Aporte Mensal</label><input type="text" id="ap_aporte" placeholder="R$ 5.000" (input)="formatarMoedaInput($event)">
+                        <label>Anos</label><input type="number" id="ap_anos" placeholder="15">
+                        <label>Taxa %</label><div class="input-group input-suffix"><input type="text" id="ap_taxa" placeholder="0,80" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+                        <button class="btn-action" (click)="calcAposentadoria()">Simular</button>
+                    </div>
+                    <div id="ap_result" style="display:none; animation: fadeIn 0.5s;">
+                        <div class="card" style="text-align:center;">
+                            <h3>Seu Cenário na Renda Fixa</h3>
+                            <div style="margin-bottom:15px;"><small>Capital Acumulado</small><strong style="font-size:24px;" id="ap_banco_cap">R$ 0,00</strong></div>
+                            <div><small>Renda Passiva Mensal</small><strong style="font-size:24px; color:var(--text-secondary);" id="ap_banco_renda">R$ 0,00</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab_imobiliaria" class="sub-tab-content">
+                <div class="grid-2">
+                    <div class="control-panel">
+                        <h3>Planejamento Imobiliário</h3>
+                        <label>Aporte Mensal</label><input type="text" id="pi_aporte" placeholder="R$ 2.000,00" (input)="formatarMoedaInput($event)">
+                        <label>Prazo (Anos)</label><input type="number" id="pi_anos" value="15">
+                        <label>Valorização Imóvel % a.a.</label><input type="text" id="pi_val" placeholder="6,00" (keyup)="formatarDecimalInput($event)">
+                        <label>Taxa Aluguel % a.m.</label><input type="text" id="pi_rent" placeholder="0,50" (keyup)="formatarDecimalInput($event)">
+                        <button class="btn-action" (click)="calcProjecaoImobiliaria()">Gerar Tabela</button>
+                    </div>
+                    <div id="pi_result" style="display:none; animation: fadeIn 0.5s;">
+                        <div class="card">
+                            <h3>Construção de Patrimônio (Ciclo 5 Anos)</h3>
+                            <table class="imob-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;">Ano</th>
+                                        <th style="width: 35%;">Evento</th>
+                                        <th style="width: 25%;">Patrimônio Acumulado</th>
+                                        <th style="width: 25%;">Renda Aluguel</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pi_table_body"></tbody>
+                                <tfoot>
+                                    <tr class="imob-total-row">
+                                        <td colspan="2" class="total-label">TOTAL ACUMULADO EM <span id="pi_anos_display">15</span> ANOS</td>
+                                        <td><span id="pi_total_pat"></span></td>
+                                        <td><span id="pi_total_alu"></span></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <p style="margin-top:15px; font-size:11px; color:var(--text-muted);">*Considerando reinvestimento, valorização do imóvel e ciclos de contemplação média.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            
+
+        </div>
+        
+        <div class="legal-footer">
+            <p>Ademicon Consórcio e Investimento © 2024. Gestão Private.</p>
+            <p style="color:var(--text-muted);">Este material tem caráter meramente informativo e de simulação financeira, não configurando promessa de contemplação. <br>Os valores apresentados baseiam-se em projeções econômicas e regras vigentes do sistema de consórcios (Lei 11.795/2008).</p>
+        </div>
+
+    </div>
+    </div>
+
+    <div id="modal-resumo" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; overflow-y: auto; align-items: center; justify-content: center;">
+        <div class="modal-content-box">
+            <span class="close-modal" (click)="closeResumoModal()" style="position: absolute; top: 20px; right: 20px; cursor: pointer; font-weight: bold; font-size: 20px;">✕</span>
+            
+            <div class="no-print" style="margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                <input type="text" id="client_name" placeholder="Nome do Cliente" (keyup)="syncDisplayText('display_client', $event)" style="padding: 10px; background: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-main);">
+                <input type="text" id="consultant_name" placeholder="Seu Nome" (keyup)="syncDisplayText('display_consultant', $event)" style="padding: 10px; background: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-main);">
+                <input type="text" id="company_name" placeholder="Nome da Empresa" (keyup)="syncDisplayText('display_company', $event)" style="padding: 10px; background: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-main);">
+            </div>
+
+            <div class="only-print" style="text-align: center; margin-bottom: 30px; display: none;">
+                <p style="font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 2px;">Preparado exclusivamente para</p>
+                <h2 id="display_client" style="font-size: 24px; color: #D4AF37; margin: 5px 0;"></h2>
+            </div>
+            
+            <div style="text-align: center; border-bottom: 2px solid #ED1C24; padding-bottom: 20px; margin-bottom: 30px;">
+                <h2 style="margin: 0; text-transform: uppercase; letter-spacing: 2px; color: #fff; font-size: 24px;">Ademicon Private</h2>
+                <p style="margin: 5px 0 0 0; color: #999; font-size: 12px;">Relatório de Viabilidade Econômica</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; margin-bottom: 20px; page-break-inside: avoid; border: 1px solid rgba(255,255,255,0.1);">
+                <h4 style="margin: 0 0 15px 0; border-bottom: 1px solid #333; padding-bottom: 5px; color: #ED1C24;">1. Análise de Perfil & Diagnóstico</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 13px;">
+                    <div><span style="color:#aaa;">Liquidez Disponível:</span> <strong id="rep_investido" style="color:#fff;">-</strong></div>
+                    <div><span style="color:#aaa;">Renda Mensal:</span> <strong id="rep_renda" style="color:#fff;">-</strong></div>
+                    <div><span style="color:#aaa;">Patrimônio Imob.:</span> <strong id="rep_patrimonio" style="color:#fff;">-</strong></div>
+                    <div><span style="color:#aaa;">Capacidade de Alocação Mensal:</span> <strong id="rep_aporte" style="color:#fff;">-</strong></div>
+                </div>
+                <div style="margin-top: 15px; background: rgba(0,0,0,0.3); padding: 10px; border-left: 4px solid #ED1C24;">
+                    <strong style="display:block; color: #ED1C24;" id="rep_strategy_title">Estratégia Recomendada</strong>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: #ccc;" id="rep_strategy_desc">-</p>
+                    <div style="margin-top:10px; font-size:14px; color:#fff;"><strong>Sugestão:</strong> <span id="rep_sugestao">-</span> | <strong>Crédito Potencial:</strong> <span id="rep_credito">-</span></div>
+                </div>
+            </div>
+
+            <div class="print-section">
+                <h4 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 5px;">2. Cenário: Estratégia de Liquidez (Cash-out via Banca Exclusiva)</h4>
+                
+                <div class="print-header-grid">
+                    <div><span class="print-kpi">Crédito Inicial</span><div id="print_liq_credito" class="print-value">-</div></div>
+                    <div><span class="print-kpi">Crédito Corrigido</span><div id="print_liq_credito_corr" class="print-value">-</div></div>
+                    <div><span class="print-kpi">Prazo</span><div id="print_liq_prazo" class="print-value">-</div></div>
+                    <div><span class="print-kpi">Total Investido (c/ Correção)</span><div id="print_liq_inicial" class="print-value" style="color:#ED1C24;">-</div></div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 10px;">
+                    <div><small style="color:#aaa;">Resultado Líquido Projetado</small><div id="print_liq_lucro" style="font-weight:bold; font-size:16px; color:#10b981;">-</div></div>
+                    <div><small style="color:#aaa;">Valor de Realização (Exit)</small><div id="print_liq_venda" style="font-weight:bold; color:#fff;">-</div></div>
+                    <div><small style="color:#aaa;">ROI Mensal</small><div id="print_liq_roi" style="font-weight:bold; color:#ED1C24;">-</div></div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-top: 15px; border-left: 3px solid #10b981;">
+                    <strong style="color: #10b981; font-size: 11px; text-transform: uppercase; display: flex; align-items: center; gap: 5px;">
+                        <span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span> Liquidez Institucional Exclusiva
+                    </strong>
+                    <p style="font-size: 10px; color: #ccc; margin: 5px 0 0 0; line-height: 1.5;">
+                        Acesso direto à Banca Própria (Contemplay) para liquidação do ativo. Operação auditada com segurança jurídica e <em>settlement</em> garantido pela administradora. Diferente do mercado, aqui eliminamos 100% do <strong>risco de contraparte</strong> (inadimplência) comum em negociações no mercado paralelo.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="print-section">
+                <h4 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 5px;">3. Cenário: Equity (Giro de Capital)</h4>
+                
+                <div class="print-header-grid">
+                    <div><span class="print-kpi">Crédito Levantado</span><div id="print_eq_credito" class="print-value">-</div></div>
+                    <div><span class="print-kpi">Prazo Simulado</span><div id="print_eq_prazo" class="print-value">-</div></div>
+                    <div><span class="print-kpi">Inv. Reduzido</span><div id="print_eq_inicial" class="print-value" style="color:#ED1C24;">-</div></div>
+                    <div><span class="print-kpi">Inv. Pós</span><div id="print_eq_pos" class="print-value">-</div></div>
+                </div>
+                
+                <div style="margin-top: 10px;">
+                    <div style="margin-bottom: 10px; display:flex; justify-content:space-between; align-items:center;">
+                        <div><small style="color:#aaa; text-transform: uppercase;">Crédito Disponível (Corrigido)</small><div id="print_eq_disponivel" style="font-weight:bold; font-size:16px; color:#10b981;">-</div></div>
+                        <div><small style="color:#aaa; text-transform: uppercase;">Custo Efetivo a.m.</small><div id="print_eq_custo" style="font-weight:bold; font-size:16px; color:#ED1C24;">-</div></div>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-top: 15px; border-left: 3px solid #fff;">
+                        <strong style="color: #fff; font-size: 11px; text-transform: uppercase; display: flex; align-items: center; gap: 5px;">
+                            <span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span> Engenharia de Crédito & Flexibilidade
+                        </strong>
+                        <p style="font-size: 10px; color: #ccc; margin: 5px 0 0 0; line-height: 1.5;">
+                            <strong>Exclusividade de Mercado:</strong> Estruturação de <em>Cash-out</em> (Capital de Giro) admitindo <strong>Imóvel Próprio</strong> ou de <strong>Terceiros</strong> (Interveniente Garantidor) como lastro — uma modalidade proprietária da Ademicon.<br>
+                            Permite arquitetura financeira avançada: <strong>Unificação de Cotas</strong> (Funding concentrado em um único bem) ou operação <strong>Guarda-Chuva</strong> (Um crédito pulverizado em múltiplos ativos), maximizando a eficiência da garantia real.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="print-section">
+                <h4 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 5px;">4. Cenário: Alavancagem Patrimonial</h4>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px; border-left: 3px solid #666;">
+                    <strong style="display:block; font-size: 11px; color: #aaa; margin-bottom: 5px;">PONTO DE PARTIDA (1º Ciclo)</strong>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div><small style="color:#aaa;">Crédito Inicial</small><div id="print_ala_credito1" style="font-weight:bold; font-size:13px; color:#fff;">-</div></div>
+                        <div><small style="color:#aaa;">Aporte Mensal Inicial</small><div id="print_ala_parcela1" style="font-weight:bold; font-size:13px; color:#ED1C24;">-</div></div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px dashed #333; padding-bottom: 5px;">
+                    <small style="color:#aaa; text-transform: uppercase;">Tempo Total de Construção do Patrimônio</small>
+                    <strong id="print_ala_tempo" style="font-size:14px; color:#fff;">-</strong>
+                </div>
+
+                <div style="width: 100%; height: 180px; margin-bottom: 10px; border: 1px solid #333; background: rgba(0,0,0,0.3);">
+                    <img id="print_ala_chart_img" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <div><small style="color:#aaa;">Investimento Total</small><div id="print_ala_investido" style="font-weight:bold; font-size:14px; color:#fff;">-</div></div>
+                    <div><small style="color:#aaa;">Patrimônio (s/ val.)</small><div id="print_ala_pat" style="font-weight:bold; font-size:14px; color:#D4AF37;">-</div></div>
+                    <div><small style="color:#aaa;">Renda Aluguéis</small><div id="print_ala_renda" style="font-weight:bold; font-size:14px; color:#0ea5e9;">-</div></div>
+                    <div><small style="color:#aaa;">Free Cash Flow (FCF)</small><div id="print_ala_sobra" style="font-weight:bold; font-size:14px; color:#10b981;">-</div></div>
+                </div>
+                
+                <div style="background: rgba(212, 175, 55, 0.05); padding: 10px; border-radius: 4px; margin-top: 15px; border-left: 3px solid #D4AF37;">
+                    <strong style="color: #D4AF37; font-size: 11px; text-transform: uppercase; display: flex; align-items: center; gap: 5px;">
+                        <span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"></path></svg></span> Ciclo de Acumulação Autofinanciável
+                    </strong>
+                    <p style="font-size: 10px; color: #ccc; margin: 5px 0 0 0; line-height: 1.5;">
+                       <p style="font-size: 10px; color: #ccc; margin: 5px 0 0 0; line-height: 1.5;">
+                        Estratégia de <em>Compound Real Estate</em>: O fluxo de caixa gerado pelo primeiro ativo (Yield) custeia a expansão da carteira, criando um mecanismo de alavancagem perpétua sem novos aportes do bolso. <strong>Nota:</strong> Cenário conservador (Base Zero) que desconsidera a valorização imobiliária (<em>Appreciation</em>) e a correção dos aluguéis, focando estritamente na eficiência do capital.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="print-section">
+                <h4 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 5px;">5. Cenário: Assunção de Dívida (Smart Exit)</h4>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; margin-top: 10px;">
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 8px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.3); text-align: center;">
+                        <small style="color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-size: 8px;">Deságio Técnico (Quit.)</small>
+                        <strong style="display:block; font-size: 18px; color: #10b981; margin-top:2px;">20% a 30%</strong>
+                        <span style="font-size: 8px; color: #888; display:block; margin-top:2px;">Economia s/ Saldo Devedor</span>
+                    </div>
+                    <div style="background: rgba(212, 175, 55, 0.1); padding: 8px; border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">
+                        <small style="color: #aaa; text-transform: uppercase; letter-spacing: 1px; font-size: 8px;">Ganho Financeiro</small>
+                        <strong style="display:block; font-size: 18px; color: #d4af37; margin-top:2px;">Arbitragem</strong>
+                        <span style="font-size: 8px; color: #888; display:block; margin-top:2px;">Spread (Custo vs Selic)</span>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 4px; border-left: 3px solid #ED1C24;">
+                    <strong style="color: #ED1C24; font-size: 11px; text-transform: uppercase; display: flex; align-items: center; gap: 5px;">
+                        <span><svg class="icon-svg icon-sm" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span> Estratégia de Realização de Lucro (Exit)
+                    </strong>
+                    <p style="font-size: 10px; color: #ccc; margin: 5px 0 0 0; line-height: 1.6; text-align: justify;">
+                        Possibilidade de liquidar a operação gerando ganho de capital através da <strong>Assunção de Dívida</strong> (Art. 299 CC). Ao transferir o ativo (crédito com taxa de 0,10% a.m.) para terceiros que buscariam financiamento bancário (1,50% a.m.), o investidor consegue repassar o saldo devedor com ágio, efetivando uma quitação com desconto real. Isso maximiza o retorno sobre o capital próprio investido no período.
+                    </p>
+                </div>
+            </div>
+
+            <div class="print-section">
+                <h4 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 5px;">6. Gestão Private: Advisory & Inteligência de Dados</h4>
+                
+                <div style="background: rgba(212, 175, 55, 0.05); padding: 12px; border-radius: 4px; border-left: 3px solid #D4AF37; margin-top: 15px;">
+                    <strong style="color: #D4AF37; font-size: 11px; text-transform: uppercase; display: flex; align-items: center; gap: 5px;">
+                        <span>
+                            <svg class="icon-svg icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </span>
+                        Acompanhamento Estratégico & Aceleração
+                    </strong>
+                    
+                    <p style="font-size: 10px; color: #ccc; margin: 5px 0 0 0; line-height: 1.6; text-align: justify;">
+                        Atuação consultiva com foco em <strong>Gestão Ativa de Lances</strong>. O serviço compreende o monitoramento estatístico das assembleias, envio mensal de relatórios de viabilidade matemática (probabilidades) e direcionamento tático para aceleração da contemplação. Inclui acesso prioritário a oportunidades exclusivas da Mesa de Negócios e suporte em estruturação jurídica e tributária.
+                    </p>
+                </div>
+            </div>
+            <p style="font-size: 10px; color: #666; text-align: center; margin-top: 30px;">
+                Este documento é uma simulação de cenários econômicos e não configura promessa de contemplação. 
+                Os valores podem sofrer alterações conforme INCC e política comercial vigente.
+                Documento Confidencial. Elaborado exclusivamente para análise de viabilidade econômica da <strong>Denucci Private Solutions</strong>.
+            </p>
+            
+            <div class="print-footer" style="margin-top: 50px; border-top: 1px solid rgba(212, 175, 55, 0.3); padding-top: 20px;">
+                <div>
+                    <strong id="display_company" style="color: #fff; font-size: 14px; display: block; margin-bottom: 5px;">Denucci Private Solutions</strong>
+                    <span id="display_consultant" style="color: #888; font-size: 11px; display: block;">Sócio Diretor</span>
+                </div>
+            </div>
+            
+            <div class="no-print" style="display: flex; gap: 15px; margin-top: 20px;">
+                <button (click)="closeResumoModal()" style="flex: 1; padding: 15px; background: transparent; color: #fff; border: 1px solid #333; border-radius: 4px; cursor: pointer; font-weight: bold; text-transform: uppercase;">Fechar / Editar</button>
+                <button (click)="printReport()" style="flex: 1; padding: 15px; background: #ED1C24; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; text-transform: uppercase;">Imprimir / PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-config" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 300; align-items: center; justify-content: center;">
+        <div class="modal-content-box" style="max-width: 500px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:15px;">
+                <h2 style="margin:0; font-size:18px; color: var(--text-main);">Parâmetros Globais</h2>
+                <span (click)="closeConfigModal()" style="cursor:pointer; font-size:20px;">✕</span>
+            </div>
+            
+            <div style="height: 60vh; overflow-y: auto; padding-right: 10px;">
+                <h4 style="color: var(--brand-red); margin-bottom: 10px;">Custos do Grupo (Ademicon)</h4>
+                
+                <label>Taxa Administrativa Total (%)</label>
+                <div class="input-group input-suffix"><input type="text" id="cfg_taxa_adm" placeholder="24.00" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+                
+                <label>Fundo de Reserva Total (%)</label>
+                <div class="input-group input-suffix"><input type="text" id="cfg_fundo_reserva" placeholder="1.00" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+
+                <label>Prazo Padrão do Grupo (Meses)</label>
+                <input type="number" id="cfg_prazo" placeholder="200">
+
+                <h4 style="color: var(--brand-red); margin-top: 25px; margin-bottom: 10px;">Fatores de Cálculo</h4>
+
+                <label>INCC Anual Projetado (%)</label>
+                <div class="input-group input-suffix"><input type="text" id="cfg_incc" placeholder="7.00" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+
+                <label>Investimento Reduzido (R$) p/ cada 100k</label>
+                <small style="color:var(--text-muted); margin-bottom:5px; display:block;">Valor da "Meia Parcela" para cada 100 mil de crédito.</small>
+                <div class="input-group"><input type="text" id="cfg_invest_100k" placeholder="R$ 333,40" (input)="formatarMoedaInput($event)"></div>
+
+                <h4 style="color: var(--brand-red); margin-top: 25px; margin-bottom: 10px;">Comparativos de Mercado</h4>
+
+                <label>Juros Bancário Médio (% a.m.)</label>
+                <div class="input-group input-suffix"><input type="text" id="cfg_juros_banco" placeholder="1.50" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+
+                <label>CDI / Custo Oportunidade (% a.m.)</label>
+                <div class="input-group input-suffix"><input type="text" id="cfg_cdi" placeholder="0.90" (keyup)="formatarDecimalInput($event)"><span class="suffix-symbol">%</span></div>
+            </div>
+
+            <div style="margin-top:20px;">
+                <button class="btn-action" (click)="salvarConfiguracoes()">Salvar Parâmetros</button>
+                <p style="text-align:center; font-size:10px; color:var(--text-muted); margin-top:10px;">As configurações ficarão salvas no seu navegador.</p>
+            </div>
+        </div>
+    </div>
