@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { Chart, registerables } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-Chart.register(...registerables, ChartDataLabels);
+Chart.register(...registerables);
 
 interface ConfigData {
   adm: number;
@@ -28,14 +28,6 @@ interface InquilinoData {
   sobra: number;
 }
 
-declare global {
-  interface Window {
-    simularInquilino?: (id: number) => void;
-    formatarMoedaInput?: (input: HTMLInputElement) => void;
-    formatarDecimalInput?: (input: HTMLInputElement) => void;
-  }
-}
-
 @Component({
   selector: 'app-apresentacao',
   standalone: true,
@@ -49,6 +41,7 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
   private chartEquityInstance: Chart | null = null;
   private chartGlobalInquilinosInstance: Chart | null = null;
   private chartSpreadInstance: Chart | null = null;
+  private ngContentScopeAttr: string | null = null;
 
   private inquilinoCount = 0;
   private dadosInquilinos: (InquilinoData | null)[] = [];
@@ -66,8 +59,6 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
   currentTheme: 'dark' | 'light' = 'dark';
 
   ngOnInit(): void {
-    this.registerWindowCallbacks();
-
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.currentTheme = savedTheme;
@@ -100,10 +91,6 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chartEquityInstance?.destroy();
     this.chartGlobalInquilinosInstance?.destroy();
     this.chartSpreadInstance?.destroy();
-
-    delete window.simularInquilino;
-    delete window.formatarMoedaInput;
-    delete window.formatarDecimalInput;
   }
 
   dismissSplash(): void {
@@ -131,6 +118,11 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chartEquityInstance?.update();
     this.chartGlobalInquilinosInstance?.update();
     this.chartSpreadInstance?.update();
+    this.scheduleChartResize(this.chartCenarioInstance);
+    this.scheduleChartResize(this.chartComparativoInstance);
+    this.scheduleChartResize(this.chartEquityInstance);
+    this.scheduleChartResize(this.chartGlobalInquilinosInstance);
+    this.scheduleChartResize(this.chartSpreadInstance);
   }
 
   showSection(sectionId: string): void {
@@ -391,12 +383,17 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
         scales: {
           y: { display: false, suggestedMax: 2.5 },
           x: {
-            ticks: { color: '#fff', font: { size: 10 } },
+            ticks: {
+              color: this.currentTheme === 'light' ? '#4B5563' : '#ffffff',
+              font: { size: 10 },
+            },
             grid: { display: false },
           },
         },
       },
     } as any);
+
+    this.scheduleChartResize(this.chartCenarioInstance);
   }
 
   revealCenario(type: 'avista' | 'banco' | 'ademicon' | string): void {
@@ -505,6 +502,8 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
         scales: { y: { display: false }, x: { display: false } },
       },
     } as any);
+
+    this.scheduleChartResize(this.chartComparativoInstance);
   }
 
   calcEquity(): void {
@@ -641,6 +640,7 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
         },
       },
     } as any);
+    this.scheduleChartResize(this.chartEquityInstance);
 
     const spread = this.getCfg('jurosBanco') - custoAdemicon;
     const gradRed = this.createGradient(ctxSpread, 'rgba(237, 28, 36, 0.9)');
@@ -685,6 +685,7 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       plugins: [ChartDataLabels],
     } as any);
+    this.scheduleChartResize(this.chartSpreadInstance);
   }
 
   calcLances(): void {
@@ -760,10 +761,10 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="tenant-header"><span class="tenant-title">Inquilino ${id} (Imóvel ${id})</span><span style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Planejamento Imobiliário</span></div>
         <div class="grid-2">
           <div id="inputs-${id}">
-            <label>Investimento em Crédito Inicial</label><input type="text" id="inq_credito_${id}" placeholder="R$ 1.000.000,00" oninput="formatarMoedaInput(this)">
+            <label>Investimento em Crédito Inicial</label><input type="text" id="inq_credito_${id}" placeholder="R$ 1.000.000,00">
             <label>Período de Contemplação (Meses)</label><input type="number" id="inq_meses_${id}" placeholder="Ex: 50">
-            <div style="margin-top: 15px; margin-bottom: 15px;"><label style="margin-bottom: 8px; color: #777;">Yield Esperado (% a.m.)</label><div style="margin-bottom: 10px;"><span class="info-pill">Curto Prazo: 1.8%</span><span class="info-pill">Comercial: 1.0%</span><span class="info-pill">Residencial: 0.5%</span></div><div class="input-group input-suffix"><input type="text" id="inq_taxa_${id}" placeholder="Ex: 0,50" onkeyup="formatarDecimalInput(this)"><span class="suffix-symbol">% a.m.</span></div></div>
-            <button class="btn-action" onclick="simularInquilino(${id})">Revelar Cenário ${id}</button>
+            <div style="margin-top: 15px; margin-bottom: 15px;"><label style="margin-bottom: 8px; color: #777;">Yield Esperado (% a.m.)</label><div style="margin-bottom: 10px;"><span class="info-pill">Curto Prazo: 1.8%</span><span class="info-pill">Comercial: 1.0%</span><span class="info-pill">Residencial: 0.5%</span></div><div class="input-group input-suffix"><input type="text" id="inq_taxa_${id}" placeholder="Ex: 0,50"><span class="suffix-symbol">% a.m.</span></div></div>
+            <button id="btn-simular-${id}" class="btn-action" type="button">Revelar Cenário ${id}</button>
           </div>
           <div id="resultados-${id}" style="display: none;">
             <h3 style="color: var(--text-main); border-bottom: 1px solid var(--border); padding-bottom: 5px; font-weight:300;">Dados da Operação</h3>
@@ -779,8 +780,10 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`;
 
     const div = document.createElement('div');
-    div.innerHTML = html;
+    div.innerHTML = html.trim();
+    this.applyContentScopeAttr(div, container);
     container.appendChild(div);
+    this.bindInquilinoInteractions(id);
 
     if (id > 1) {
       setTimeout(() => {
@@ -978,6 +981,7 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
         },
       },
     } as any);
+    this.scheduleChartResize(this.chartGlobalInquilinosInstance);
   }
 
   abrirModalRelatorio(): void {
@@ -1172,14 +1176,6 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setText(targetId, target.value);
   }
 
-  private registerWindowCallbacks(): void {
-    window.simularInquilino = (id: number) => this.simularInquilino(id);
-    window.formatarMoedaInput = (input: HTMLInputElement) =>
-      this.formatarMoedaInput(input);
-    window.formatarDecimalInput = (input: HTMLInputElement) =>
-      this.formatarDecimalInput(input);
-  }
-
   private applyChartThemeDefaults(): void {
     if (this.currentTheme === 'light') {
       Chart.defaults.color = '#4B5563';
@@ -1253,5 +1249,42 @@ export class ApresentacaoComponent implements OnInit, AfterViewInit, OnDestroy {
   private setDisplay(id: string, value: string): void {
     const el = this.getElement<HTMLElement>(id);
     if (el) el.style.display = value;
+  }
+
+  private scheduleChartResize(chart: Chart | null): void {
+    if (!chart) return;
+    window.requestAnimationFrame(() => chart.resize());
+  }
+
+  private bindInquilinoInteractions(id: number): void {
+    const creditoInput = this.getElement<HTMLInputElement>(`inq_credito_${id}`);
+    creditoInput?.addEventListener('input', (event) =>
+      this.formatarMoedaInput(event),
+    );
+
+    const taxaInput = this.getElement<HTMLInputElement>(`inq_taxa_${id}`);
+    taxaInput?.addEventListener('input', (event) =>
+      this.formatarDecimalInput(event),
+    );
+
+    const button = this.getElement<HTMLButtonElement>(`btn-simular-${id}`);
+    button?.addEventListener('click', () => this.simularInquilino(id));
+  }
+
+  private applyContentScopeAttr(root: HTMLElement, reference: HTMLElement): void {
+    const scopeAttr =
+      this.ngContentScopeAttr ??
+      Array.from(reference.attributes).find((attr) =>
+        attr.name.startsWith('_ngcontent-'),
+      )?.name ??
+      null;
+
+    if (!scopeAttr) return;
+
+    this.ngContentScopeAttr = scopeAttr;
+    root.setAttribute(scopeAttr, '');
+    root
+      .querySelectorAll<HTMLElement>('*')
+      .forEach((element) => element.setAttribute(scopeAttr, ''));
   }
 }

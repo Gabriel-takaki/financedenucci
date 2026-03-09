@@ -515,6 +515,7 @@
   }
   
   .timeline-content {
+    display: none;
     margin-top: 10px;
     font-size: 13px;
     color: var(--text-muted);
@@ -548,12 +549,12 @@
   }
   
   .badge-content {
+    display: none;
     animation: fadeIn 0.5s;
     font-size: 12px;
     color: var(--text-muted);
     font-weight: 300;
     line-height: 1.5;
-    display: block;
     margin-top: 10px;
   }
   
@@ -592,6 +593,7 @@
   }
   
   .hidden-content {
+    display: none;
     animation: fadeIn 0.5s;
   }
   
@@ -677,6 +679,7 @@
   }
   
   .step-content {
+    display: none;
     margin-top: 15px;
     color: var(--text-muted);
     font-size: 13px;
